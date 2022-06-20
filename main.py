@@ -1,4 +1,4 @@
-import uvicorn
+# import uvicorn
 from deepface import DeepFace
 from fastapi import FastAPI, File, UploadFile
 # from prediction import read_image , preprocess
@@ -22,7 +22,7 @@ def home():
     return {"message":"Hello TutLinks.com"}
 
     
-input_shape = (512, 512)
+# input_shape = (512, 512)
 
 def read_image(file):
     pil_image = Image.open(BytesIO(file))
@@ -54,18 +54,18 @@ async def images(img1: UploadFile  = File(...), img2: UploadFile  = File(...)):
 
 
 
-@app.post('/api/predict')
-async def image_filter(file: UploadFile = File(...)):
-  # img1_path = file.read()
-        img = read_image(await file.read())
-        img = preprocess(img)
-        img1= DeepFace.detectFace(img)
-        model_name = 'Facenet'
-        # result= DeepFace.verify(img1_path = img, img2_path = img, model_name = model_name)
-        model_name = 'Facenet'
+# @app.post('/api/predict')
+# async def image_filter(file: UploadFile = File(...)):
+#   # img1_path = file.read()
+#         img = read_image(await file.read())
+#         img = preprocess(img)
+#         img1= DeepFace.detectFace(img)
+#         model_name = 'Facenet'
+#         # result= DeepFace.verify(img1_path = img, img2_path = img, model_name = model_name)
+#         model_name = 'Facenet'
 
-        result= DeepFace.analyze(img1 , enforce_detection=False)      
-        print(result)
+#         result= DeepFace.analyze(img1 , enforce_detection=False)      
+#         print(result)
 
-if __name__ == '__main__':
-    uvicorn.run(app, port = 8000, host = '127.0.0.1')
+# if __name__ == '__main__':
+#     uvicorn.run(app, port = 8000, host = '127.0.0.1')
