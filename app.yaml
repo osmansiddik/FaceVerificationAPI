@@ -1,2 +1,9 @@
 runtime: python37
 entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
+skip_files:
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
+- ^(.*/)?.*\.bak$
